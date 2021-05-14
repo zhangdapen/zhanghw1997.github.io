@@ -1,22 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://zhanghw1997.github.io</id>
-    <title>Grand</title>
-    <updated>2021-05-14T03:05:48.658Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://zhanghw1997.github.io"/>
-    <link rel="self" href="https://zhanghw1997.github.io/atom.xml"/>
-    <subtitle>Grand的个人博客</subtitle>
-    <logo>https://zhanghw1997.github.io/images/avatar.png</logo>
-    <icon>https://zhanghw1997.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Grand</rights>
-    <entry>
-        <title type="html"><![CDATA[MongoDB搭建分片集群]]></title>
-        <id>https://zhanghw1997.github.io/post/mongodb-da-jian-fen-pian-ji-qun/</id>
-        <link href="https://zhanghw1997.github.io/post/mongodb-da-jian-fen-pian-ji-qun/">
-        </link>
-        <updated>2021-05-14T03:02:54.000Z</updated>
-        <content type="html"><![CDATA[<h4 id="分片信息">分片信息</h4>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MongoDB搭建分片集群 | Grand</title>
+<link rel="shortcut icon" href="https://zhanghw1997.github.io/favicon.ico?v=1620961547102">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhanghw1997.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="MongoDB搭建分片集群 | Grand - Atom Feed" href="https://zhanghw1997.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="分片信息
+
+由于本机运行不了虚拟机，所以在本机使用端口区分各个实例
+
+
+
+
+mongos
+config
+shard1
+shard2
+shard3
+shar4
+
+
+
+
+27017
+27018
+27001
+27002
+27003
+27004
+
+..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zhanghw1997.github.io">
+  <img class="avatar" src="https://zhanghw1997.github.io/images/avatar.png?v=1620961547102" alt="">
+  </a>
+  <h1 class="site-title">
+    Grand
+  </h1>
+  <p class="site-description">
+    Grand的个人博客
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              MongoDB搭建分片集群
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-05-14
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h4 id="分片信息">分片信息</h4>
 <ul>
 <li>由于本机运行不了虚拟机，所以在本机使用端口区分各个实例</li>
 </ul>
@@ -363,6 +459,99 @@ for(var i=0; i&lt;10000; i++){db.bar.insert({i:i})}
 </code></pre>
 </li>
 </ul>
-]]></content>
-    </entry>
-</feed>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%88%86%E7%89%87%E4%BF%A1%E6%81%AF">分片信息</a></li>
+<li><a href="#%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4">搭建步骤</a>
+<ul>
+<li><a href="#%E6%90%AD%E5%BB%BAshard1%E5%A4%8D%E5%88%B6%E9%9B%86">搭建shard1复制集</a></li>
+<li><a href="#%E6%90%AD%E5%BB%BAconfig%E5%A4%8D%E5%88%B6%E9%9B%86">搭建config复制集</a></li>
+<li><a href="#%E6%90%AD%E5%BB%BAmongos">搭建mongos</a></li>
+<li><a href="#%E5%9C%A8mongos%E4%B8%8A%E6%B7%BB%E5%8A%A0%E5%88%86%E7%89%87">在mongos上添加分片</a></li>
+<li><a href="#%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E9%9B%86%E5%90%88%E8%BF%9B%E8%A1%8C%E5%88%86%E5%8C%BA%E8%AE%BE%E7%BD%AE">对数据库和集合进行分区设置</a></li>
+<li><a href="#%E6%8F%92%E5%85%A5%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE">插入测试数据</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E5%88%86%E7%89%87">添加分片</a>
+<ul>
+<li><a href="#%E6%90%AD%E5%BB%BA%E6%96%B0%E7%9A%84%E5%88%86%E7%89%87%E5%A4%8D%E5%88%B6%E9%9B%86%E7%BE%A4">搭建新的分片复制集群</a></li>
+<li><a href="#%E6%8A%8A%E6%96%B0%E7%9A%84%E5%A4%8D%E5%88%B6%E9%9B%86%E7%BE%A4%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%88%86%E7%89%87%E9%9B%86%E7%BE%A4%E4%B8%AD">把新的复制集群添加到分片集群中</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/zhanghw1997/" target="_blank">Gridea</a>
+  <a class="rss" href="https://zhanghw1997.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
