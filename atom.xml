@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhanghw1997.github.io</id>
     <title>Grand</title>
-    <updated>2021-05-14T06:50:58.579Z</updated>
+    <updated>2021-05-14T06:53:12.226Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhanghw1997.github.io"/>
     <link rel="self" href="https://zhanghw1997.github.io/atom.xml"/>
@@ -89,11 +89,9 @@ mkdir -p /Users/zhanghongwei/Documents/个人/app/mongodb/分片集群/shard1/sh
 </li>
 <li>
 <p>编写配置文件</p>
-</li>
-<li>
 <ul>
-<li>
-<p>shard11</p>
+<li>shard11</li>
+</ul>
 <pre><code class="language-shell">dbpath=/Users/zhanghongwei/Documents/个人/app/mongodb/分片集群/shard1/shard11/data
 logpath=/Users/zhanghongwei/Documents/个人/app/mongodb/分片集群/shard1/shard11/shard11.log
 port=27001
@@ -104,7 +102,7 @@ shardsvr=true
 replSet=shard1
 bind_ip=0.0.0.0
 </code></pre>
-</li>
+<ul>
 <li>
 <p>shard12</p>
 <pre><code class="language-shell">dbpath=/Users/zhanghongwei/Documents/个人/app/mongodb/分片集群/shard1/shard12/data

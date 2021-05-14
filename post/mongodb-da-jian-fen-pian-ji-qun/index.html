@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>MongoDB搭建分片集群 | Grand</title>
-<link rel="shortcut icon" href="https://zhanghw1997.github.io/favicon.ico?v=1620961547102">
+<link rel="shortcut icon" href="https://zhanghw1997.github.io/favicon.ico?v=1620975187379">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://zhanghw1997.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="MongoDB搭建分片集群 | Grand - Atom Feed" href="https://zhanghw1997.github.io/atom.xml">
@@ -45,7 +45,7 @@ shar4
       <div class="main-content">
         <div class="site-header">
   <a href="https://zhanghw1997.github.io">
-  <img class="avatar" src="https://zhanghw1997.github.io/images/avatar.png?v=1620961547102" alt="">
+  <img class="avatar" src="https://zhanghw1997.github.io/images/avatar.png?v=1620975187379" alt="">
   </a>
   <h1 class="site-title">
     Grand
@@ -185,11 +185,9 @@ mkdir -p /Users/zhanghongwei/Documents/个人/app/mongodb/分片集群/shard1/sh
 </li>
 <li>
 <p>编写配置文件</p>
-</li>
-<li>
 <ul>
-<li>
-<p>shard11</p>
+<li>shard11</li>
+</ul>
 <pre><code class="language-shell">dbpath=/Users/zhanghongwei/Documents/个人/app/mongodb/分片集群/shard1/shard11/data
 logpath=/Users/zhanghongwei/Documents/个人/app/mongodb/分片集群/shard1/shard11/shard11.log
 port=27001
@@ -200,7 +198,7 @@ shardsvr=true
 replSet=shard1
 bind_ip=0.0.0.0
 </code></pre>
-</li>
+<ul>
 <li>
 <p>shard12</p>
 <pre><code class="language-shell">dbpath=/Users/zhanghongwei/Documents/个人/app/mongodb/分片集群/shard1/shard12/data
